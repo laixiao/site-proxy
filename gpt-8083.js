@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const PORT = 8080;
+const PORT = 8083;
 
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
@@ -8,12 +8,12 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
-  "/google/",
+  "/gpt/",
   createProxyMiddleware({
-    target: "https://www.google.com",
+    target: "https://api.openai.com",
     changeOrigin: true,
     pathRewrite: {
-      "^/google": "", // 将路径中的 /gpt 替换为空字符串
+      "^/gpt": "", // 将路径中的 /gpt 替换为空字符串
     },
     onProxyReq: (proxyReq, req, res) => {
       console.log(req.url, req.originalUrl);
@@ -28,7 +28,7 @@ app.use(
 );
 app
   .listen(PORT, () => {
-    console.log(`server running on http://localhost:${PORT}/google`);
+    console.log(`server running on http://www.jxit114.xyz:${PORT}/gpt/v1`);
   })
   .on("error", (err) => {
     console.log(err);

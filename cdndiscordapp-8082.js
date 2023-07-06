@@ -28,7 +28,7 @@ app.use(
 );
 app
   .listen(PORT, () => {
-    console.log(`server running on http://localhost:${PORT}/cdndiscordapp`);
+    console.log(`server running on http://www.jxit114.xyz:${PORT}/cdndiscordapp`);
   })
   .on("error", (err) => {
     console.log(err);

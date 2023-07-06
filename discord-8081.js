@@ -1,6 +1,6 @@
 const path = require("path");
 const express = require("express");
-const PORT = 8080;
+const PORT = 8081;
 
 const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
@@ -8,15 +8,15 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
-  "/gpt/",
+  "/discord/",
   createProxyMiddleware({
-    target: "https://api.openai.com",
+    target: "https://discord.com",
     changeOrigin: true,
     pathRewrite: {
-      "^/gpt": "", // 将路径中的 /gpt 替换为空字符串
+      "^/discord": "", // 将路径中的 /discord 替换为空字符串
     },
     onProxyReq: (proxyReq, req, res) => {
-      console.log(req.url, req.originalUrl);
+      console.log(req.originalUrl);
       //proxyReq.setHeader("Authorization", `Bearer ${process.env.API_KEY}`);
     },
     onProxyRes: (proxyRes, req, res) => {
@@ -28,7 +28,7 @@ app.use(
 );
 app
   .listen(PORT, () => {
-    console.log(`server running on http://localhost:${PORT}/gpt/v1`);
+    console.log(`server running on http://www.jxit114.xyz:${PORT}/discord`);
   })
   .on("error", (err) => {
     console.log(err);
