@@ -1,3 +1,10 @@
 # OpenAI API 代理 
 
-> 目前在国内访问 OpenAI API 还是有难度的，所以用 Node.js 写了个代理小程序。好用可以 Star 一下🙌
+运行：
+cd /home/git/site-proxy
+pm2 start xxx
+
+访问：
+http://www.jxit114.xyz:8084/gptapi/v1/chat/completions
+
+git clone http://www.jxit114.xyz:8085/githubapi/iptop/GFPGAN-for-Video.git
