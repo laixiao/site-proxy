@@ -10,17 +10,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   "/gptapi",
   createProxyMiddleware({
-    target: "https://ai.fakeopen.com",
+    target: "https://api.chatanywhere.com.cn",
     changeOrigin: true,
     pathRewrite: {
       "^/gptapi": "", // 将路径中的 /gpt 替换为空字符串
     },
     onProxyReq: (proxyReq, req, res) => {
       console.log(req.url);
-      if (proxyReq.getHeader("Authorization") == "Bearer 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") {
-        proxyReq.setHeader("Authorization", `Bearer pk-this-is-a-real-free-pool-token-for-everyone`);
-        proxyReq.setHeader("api-key", `pk-this-is-a-real-free-pool-token-for-everyone`);
-      }
+        proxyReq.setHeader("Authorization", `Bearer sk-FZNYq968eJkMik6rhdGPgHzXAX0fWVH08BzguizNMIZbBdd9`);
+        proxyReq.setHeader("api-key", `sk-FZNYq968eJkMik6rhdGPgHzXAX0fWVH08BzguizNMIZbBdd9`);
     },
     onProxyRes: (proxyRes, req, res) => {
       proxyRes.headers["Access-Control-Allow-Origin"] = "*";
